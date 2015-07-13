@@ -27,8 +27,8 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-		var pictureSource// = navigator.camera.PictureSourceType;// = "west side";   // picture source
-    	var destinationType// = navigator.camera.DestinationType;//
+		this.pictureSource;// = navigator.camera.PictureSourceType;// = "west side";   // picture source
+    	this.destinationTyp;//e = destinationType;//navigator.camera.DestinationType;//
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -51,14 +51,14 @@
 		j.test("onDeviceReady() running");
 		//this.pictureSource = 'source is here';
 		//***************************************
-		a = navigator.camera.PictureSourceType;
+		a = pictureSource;
 		alert(a);
-		b = navigator.camera.DestinationType;
+		b = destinationType;
 		alert(b);
-		c = 
+		//c = 
 		       
-	   //this.pictureSource=navigator.camera.PictureSourceType;
-       //this.destinationType=navigator.camera.DestinationType;
+	  this.pictureSource=navigator.camera.PictureSourceType;
+       this.destinationType=navigator.camera.DestinationType;
 		alert("onDeviceReady: "+this.pictureSource);
     },
 
@@ -121,8 +121,8 @@
     }
 	
 }
-       //this.pictureSource=navigator.camera.PictureSourceType;
-       //this.destinationType=navigator.camera.DestinationType;
+       j.pictureSource= 'outside pictureSource'
+       j.destinationType= 'outside PictureType';
 
    j.runBaby();
 
