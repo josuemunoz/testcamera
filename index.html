@@ -10,8 +10,8 @@
   <div id="yeah"></div>
     <button onclick="j.capturePhoto();">Capture Photo</button> <br>
     <button onclick="j.capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="j.getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="j.getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <button onclick="j.getPhoto(this.pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="j.getPhoto(this.pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
   </body>
@@ -26,8 +26,8 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+	this.pictureSource = "west side";   // picture source
+    this.destinationType; // sets the format of returned value
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -51,6 +51,7 @@
     onDeviceReady: function() {
 		
 		j.test("onDeviceReady() running");
+		alert(this.pictureSource);
        pictureSource=navigator.camera.PictureSourceType;
        destinationType=navigator.camera.DestinationType;
 		
@@ -94,20 +95,20 @@
 	 capturePhoto: function() 
 	 {this.test("capturePhoto()");
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess(), onFail, { quality: 50,
-       destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(this.onPhotoDataSuccess(), this.onFail(), { quality: 50,
+       destinationType: this.destinationType.DATA_URL });
 		
     },
 	
 	  capturePhotoEdit: function() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess(), onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(this.onPhotoDataSuccess(), this.onFail(), { quality: 20, allowEdit: true,
+        destinationType: this.destinationType.DATA_URL });
     },
 	 getPhoto: function(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(this.onPhotoURISuccess(), onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
+      navigator.camera.getPicture(this.onPhotoURISuccess(), this.onFail(), { quality: 50,
+        destinationType: this.destinationType.FILE_URI,
         sourceType: source });
     },
 	  onFail: function(message) {
