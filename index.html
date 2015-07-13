@@ -54,7 +54,7 @@
 		//this.pictureSource = 'source is here';
        this.pictureSource=navigator.camera.this.PictureSourceType;
        this.destinationType=navigator.camera.this.DestinationType;
-		alert(this.pictureSource);
+		alert("onDeviceReady: "+this.pictureSource);
     },
 	 // Called when a photo is successfully retrieved
     //
@@ -94,6 +94,7 @@
     },
 	 capturePhoto: function() 
 	 {this.test("capturePhoto()");
+	 this.test(this.destinationType);
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(this.onPhotoDataSuccess(), this.onFail(), { quality: 50,
        destinationType: this.destinationType.DATA_URL });
@@ -113,6 +114,7 @@
     },
 	  onFail: function(message) {
       alert('Failed because: ' + message);
+	  alert(j.pictureSource);
     }
 	
 }
