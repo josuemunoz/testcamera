@@ -6,25 +6,29 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-	var j= function(){
+	var j= {
 		 	
-			  var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+	
 
     // Wait for device API libraries to load
     //
+	runBaby: function(){
     document.addEventListener("deviceready",onDeviceReady,false);
-
+	},
     // device APIs are available	
   
     //
-    onDeviceReady = function() {
+    onDeviceReady: function() {
+		
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+		
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     },
 	 // Called when a photo is successfully retrieved
     //
-    onPhotoDataSuccess = function(imageData) {
+    onPhotoDataSuccess:function(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
 
@@ -41,7 +45,7 @@
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
     },
-	 onPhotoURISuccess = function(imageURI) {
+	 onPhotoURISuccess: function(imageURI) {
       // Uncomment to view the image file URI
       // console.log(imageURI);
 
@@ -58,29 +62,29 @@
       //
       largeImage.src = imageURI;
     },
-	 capturePhoto = function() {
+	 capturePhoto: function() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     },
 	
-	  capturePhotoEdit= function() {
+	  capturePhotoEdit: function() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
         destinationType: destinationType.DATA_URL });
     },
-	 getPhoto = function(source) {
+	 getPhoto: function(source) {
       // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     },
-	  onFail= function(message) {
+	  onFail: function(message) {
       alert('Failed because: ' + message);
     }
 	
 }
-   j();
+   j.runBaby();
 
     // Called when a photo is successfully retrieved
     //
