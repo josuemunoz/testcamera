@@ -18,6 +18,7 @@
 </html>
 <script type="text/javascript" charset="utf-8">
 
+
 	var j= {
 		 	
 	
@@ -26,8 +27,7 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	var pictureSource;// = "west side";   // picture source
-    var destinationType; // sets the format of returned value
+	
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -50,8 +50,8 @@
 		j.test("onDeviceReady() running");
 		//this.pictureSource = 'source is here';
 		//***************************************
-       this.pictureSource=navigator.camera.this.PictureSourceType;
-       this.destinationType=navigator.camera.this.DestinationType;
+       this.pictureSource=navigator.camera.PictureSourceType;
+       this.destinationType=navigator.camera.DestinationType;
 		alert("onDeviceReady: "+this.pictureSource);
     },
 
@@ -114,7 +114,10 @@
     }
 	
 }
-
+       //this.pictureSource=navigator.camera.PictureSourceType;
+       //this.destinationType=navigator.camera.DestinationType;
+	j.pictureSource = navigator.camera.PictureSourceType;// = "west side";   // picture source
+    j.destinationType = navigator.camera.DestinationType;//
    j.runBaby();
 
     </script>
