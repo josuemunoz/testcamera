@@ -26,11 +26,15 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	
-   document.addEventListener("deviceready",this.onDeviceReady,false);
-	
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+  document.addEventListener("deviceready",this.onDeviceReady(),false);
+	//document.addEventListener("deviceready",this.see(),false);
 	
 	},
+	see:function(){
+		alert('working');
+		},
 	test: function(x){
 		var yeah = document.getElementById('yeah');
 		var	br = document.createElement('br');
@@ -46,12 +50,10 @@
     //
     onDeviceReady: function() {
 		
-		var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+		j.test("onDeviceReady() running");
+       pictureSource=navigator.camera.PictureSourceType;
+       destinationType=navigator.camera.DestinationType;
 		
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-		j.test("onDeviceReady()");
     },
 	 // Called when a photo is successfully retrieved
     //
@@ -89,21 +91,22 @@
       //
       largeImage.src = imageURI;
     },
-	 capturePhoto: function() {
+	 capturePhoto: function() 
+	 {this.test("capturePhoto()");
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-		this.test("capturePhoto()");
+      navigator.camera.getPicture(this.onPhotoDataSuccess(), onFail, { quality: 50,
+       destinationType: destinationType.DATA_URL });
+		
     },
 	
 	  capturePhotoEdit: function() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+      navigator.camera.getPicture(this.onPhotoDataSuccess(), onFail, { quality: 20, allowEdit: true,
         destinationType: destinationType.DATA_URL });
     },
 	 getPhoto: function(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(this.onPhotoURISuccess(), onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     },
