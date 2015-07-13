@@ -51,9 +51,9 @@
 		j.test("onDeviceReady() running");
 		//this.pictureSource = 'source is here';
 		//***************************************
-		a = pictureSource;
+		a = this.pictureSource;
 		alert(a);
-		b = destinationType;
+		b = this.destinationType;
 		alert(b);
 		//c = 
 		       
@@ -121,8 +121,10 @@
     }
 	
 }
-       j.pictureSource= 'outside pictureSource'
-       j.destinationType= 'outside PictureType';
+  		//this.pictureSource=navigator.camera.PictureSourceType;
+       //this.destinationType=navigator.camera.DestinationType;
+       j.pictureSource= navigator.camera.PictureSourceType;
+       j.destinationType= navigator.camera.DestinationType;
 
    j.runBaby();
 
