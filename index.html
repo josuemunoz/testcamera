@@ -27,7 +27,8 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	
+		var pictureSource// = navigator.camera.PictureSourceType;// = "west side";   // picture source
+    	var destinationType// = navigator.camera.DestinationType;//
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -50,8 +51,14 @@
 		j.test("onDeviceReady() running");
 		//this.pictureSource = 'source is here';
 		//***************************************
-       this.pictureSource=navigator.camera.PictureSourceType;
-       this.destinationType=navigator.camera.DestinationType;
+		a = navigator.camera.PictureSourceType;
+		alert(a);
+		b = navigator.camera.DestinationType;
+		alert(b);
+		c = 
+		       
+	   //this.pictureSource=navigator.camera.PictureSourceType;
+       //this.destinationType=navigator.camera.DestinationType;
 		alert("onDeviceReady: "+this.pictureSource);
     },
 
@@ -116,8 +123,7 @@
 }
        //this.pictureSource=navigator.camera.PictureSourceType;
        //this.destinationType=navigator.camera.DestinationType;
-	j.pictureSource = navigator.camera.PictureSourceType;// = "west side";   // picture source
-    j.destinationType = navigator.camera.DestinationType;//
+
    j.runBaby();
 
     </script>
