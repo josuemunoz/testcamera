@@ -4,7 +4,19 @@
     <title>Capture Photo</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
+    
+  </head>
+  <body>
+  <div id="yeah"></div>
+    <button onclick="j.capturePhoto();">Capture Photo</button> <br>
+    <button onclick="j.capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="j.getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="j.getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>
+</html>
+<script type="text/javascript" charset="utf-8">
 
 	var j= {
 		 	
@@ -13,15 +25,22 @@
     // Wait for device API libraries to load
     //
 	runBaby: function(){
+		j.test("runBaby()");
 	var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
-    document.addEventListener("deviceready",this.onDeviceReady,false);
-	j.test("runBaby()");
+   document.addEventListener("deviceready",this.onDeviceReady,false);
+	
 	
 	},
 	test: function(x){
-		var y = document.getElementById('yeah');
-		y.appendChild(x+"<br/>");
+		var yeah = document.getElementById('yeah');
+		var	br = document.createElement('br');
+			text = document.createTextNode(x);
+			//text.appendChild(br);
+		
+			yeah.appendChild(text);
+			yeah.appendChild(br);
+		//alert(text);
 		},
     // device APIs are available	
   
@@ -31,7 +50,7 @@
 		
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-		
+		j.test("onDeviceReady()");
     },
 	 // Called when a photo is successfully retrieved
     //
@@ -71,9 +90,9 @@
     },
 	 capturePhoto: function() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-		j.test("capturePhoto()");
+      //navigator.camera.getPicture(app.onPhotoDataSuccess, onFail, { quality: 50,
+       // destinationType: destinationType.DATA_URL });
+		this.test("capturePhoto()");
     },
 	
 	  capturePhotoEdit: function() {
@@ -92,37 +111,7 @@
     }
 	
 }
+
    j.runBaby();
 
-    // Called when a photo is successfully retrieved
-    //
-   
-
-    // A button will call this function
-    //
-   
-
-    // A button will call this function
-    //
-   
-
-    // A button will call this function
-    //
-   
-
-    // Called if something bad happens.
-    //
-  
-
     </script>
-  </head>
-  <body>
-  <div id="yeah"></div>
-    <button onclick="capturePhoto();">Capture Photo</button> <br>
-    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
-  </body>
-</html>
