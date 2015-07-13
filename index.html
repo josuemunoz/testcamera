@@ -26,8 +26,8 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	this.pictureSource;// = "west side";   // picture source
-    this.destinationType; // sets the format of returned value
+	var pictureSource;// = "west side";   // picture source
+    var destinationType; // sets the format of returned value
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -51,10 +51,10 @@
     onDeviceReady: function() {
 		
 		j.test("onDeviceReady() running");
-		alert(this.pictureSource);
+		//this.pictureSource = 'source is here';
        this.pictureSource=navigator.camera.PictureSourceType;
        this.destinationType=navigator.camera.DestinationType;
-		
+		alert(this.pictureSource);
     },
 	 // Called when a photo is successfully retrieved
     //
