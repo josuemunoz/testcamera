@@ -26,8 +26,7 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
+	
    document.addEventListener("deviceready",this.onDeviceReady,false);
 	
 	
@@ -47,6 +46,8 @@
     //
     onDeviceReady: function() {
 		
+		var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
 		
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
@@ -90,19 +91,19 @@
     },
 	 capturePhoto: function() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
 		this.test("capturePhoto()");
     },
 	
 	  capturePhotoEdit: function() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
         destinationType: destinationType.DATA_URL });
     },
 	 getPhoto: function(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(this.onPhotoURISuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     },
