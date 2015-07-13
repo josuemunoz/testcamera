@@ -13,18 +13,25 @@
     // Wait for device API libraries to load
     //
 	runBaby: function(){
-    document.addEventListener("deviceready",onDeviceReady,false);
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+    document.addEventListener("deviceready",this.onDeviceReady,false);
+	j.test("runBaby()");
+	
 	},
+	test: function(x){
+		var y = document.getElementById('yeah');
+		y.appendChild(x+"<br/>");
+		},
     // device APIs are available	
   
     //
     onDeviceReady: function() {
 		
-	var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
 		
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+		
     },
 	 // Called when a photo is successfully retrieved
     //
@@ -64,8 +71,9 @@
     },
 	 capturePhoto: function() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(this.onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
+		j.test("capturePhoto()");
     },
 	
 	  capturePhotoEdit: function() {
@@ -109,6 +117,7 @@
     </script>
   </head>
   <body>
+  <div id="yeah"></div>
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
