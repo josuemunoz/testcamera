@@ -58,8 +58,8 @@ var app = {
 		app.test();
 			 	 pictureSource=navigator.camera.PictureSourceType;
         		destinationType=navigator.camera.DestinationType;
-		
-			navigator.camera.getPicture(app.uploadPhoto, onFail, { quality: 100,targetWidth: 700,
+		//hi
+			navigator.camera.getPicture(this.uploadPhoto, onFail, { quality: 100,targetWidth: 700,
   		  	targetHeight:600,
         
 			destinationType: navigator.camera.DestinationType.FILE_URI,
