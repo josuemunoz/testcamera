@@ -26,8 +26,8 @@
     //
 	runBaby: function(){
 		j.test("runBaby()");
-	this.pictureSource;// = "west side";   // picture source
-    this.destinationType; // sets the format of returned value
+	var pictureSource;// = "west side";   // picture source
+    var destinationType; // sets the format of returned value
   document.addEventListener("deviceready",this.onDeviceReady(),false);
 	//document.addEventListener("deviceready",this.see(),false);
 	
@@ -45,19 +45,16 @@
 			yeah.appendChild(br);
 		//alert(text);
 		},
-    // device APIs are available	
-  
-    //
     onDeviceReady: function() {
 		
 		j.test("onDeviceReady() running");
 		//this.pictureSource = 'source is here';
+		//***************************************
        this.pictureSource=navigator.camera.PictureSourceType;
        this.destinationType=navigator.camera.DestinationType;
 		alert("onDeviceReady: "+this.pictureSource);
     },
-	 // Called when a photo is successfully retrieved
-    //
+
     onPhotoDataSuccess:function(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
@@ -94,10 +91,9 @@
     },
 	 capturePhoto: function() 
 	 {this.test("capturePhoto()");
-	 this.test(this.destinationType);
+	 this.test(this.pictureSource);
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(this.onPhotoDataSuccess(), this.onFail(), { quality: 50,
-       destinationType: this.destinationType.DATA_URL });
+      navigator.camera.getPicture(this.onPhotoDataSuccess(), this.onFail(), { quality: 50, destinationType: j.destinationType.DATA_URL });
 		
     },
 	
